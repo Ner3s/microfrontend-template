@@ -6,7 +6,6 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 const dotenv = require("dotenv");
 
 const utils = require("./config/webpack/utils");
-const { isDevelopment } = require("./config/webpack/utils");
 const env = dotenv.config({ path: utils.envTarget }).parsed;
 
 module.exports = {
@@ -47,7 +46,7 @@ module.exports = {
   },
 
   mode: "development",
-  stats: isDevelopment ? "errors-warnings" : true,
+  stats: utils.isDevelopment ? "errors-warnings" : true,
   devtool: utils.devTool,
 
   module: {
