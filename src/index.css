@@ -10,10 +10,12 @@ html {
 
   @media(min-width: 1981px) {
     font-size: 80%;
-  };
+  }
 }
 
-html, body, #root{
+html,
+body,
+#root {
   height: 100%;
 }
 

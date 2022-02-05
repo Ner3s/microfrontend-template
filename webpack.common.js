@@ -1,15 +1,20 @@
-const path = require("path");
 const webpack = require("webpack");
+const { ProvidePlugin } = require("webpack");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const dotenv = require("dotenv");
 
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+const path = require("path");
+const dotenv = require("dotenv");
 const utils = require("./config/webpack/utils");
 const env = dotenv.config({ path: utils.envTarget }).parsed;
 
 module.exports = {
-  entry: path.join(__dirname, "src", "index.tsx"),
+  entry: path.join(__dirname, "src"),
 
   output: {
     publicPath: `http://localhost:${utils.port}/`,
@@ -45,6 +50,35 @@ module.exports = {
     compress: true,
   },
 
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          parse: {
+            ecma: 8,
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false,
+            inline: 2,
+          },
+          mangle: {
+            safari10: true,
+          },
+          keep_classnames: utils.isProduction,
+          keep_fnames: utils.isProduction,
+          output: {
+            ecma: 5,
+            comments: false,
+            ascii_only: true,
+          },
+        },
+      }),
+      new CssMinimizerPlugin(),
+    ],
+  },
+
   mode: "development",
   stats: utils.isDevelopment ? "errors-warnings" : true,
   devtool: utils.devTool,
@@ -60,7 +94,7 @@ module.exports = {
       },
       {
         test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
@@ -118,6 +152,10 @@ module.exports = {
 
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(env),
+    }),
+
+    new ProvidePlugin({
+      React: "react",
     }),
 
     utils.isDevelopment && new ForkTsCheckerWebpackPlugin(),
