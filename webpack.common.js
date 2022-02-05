@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const dotenv = require("dotenv");
 
@@ -57,6 +57,10 @@ module.exports = {
         resolve: {
           fullySpecified: false,
         },
+      },
+      {
+        test: /\.(css|s[ac]ss)$/i,
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
