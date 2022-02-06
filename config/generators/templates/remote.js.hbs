@@ -1,0 +1,8 @@
+module.exports = {
+  name: '{{lowerCase name}}',
+  url: process.env.REACT_APP_REMOTE_{{constantCase name}}_URL,
+
+  get remote() {
+    return `${this.name}@${this.url}/remoteEntry.js`;
+  },
+};

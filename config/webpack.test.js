@@ -1,4 +1,3 @@
-const path = require("path");
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 const { merge } = require('webpack-merge');
@@ -11,12 +10,8 @@ module.exports = merge(common, {
     new ModuleFederationPlugin({
       name: utils.appName,
       filename: 'remoteEntry.js',
-      remotes: {
-
-      },
-      exposes: {
-
-      },
+      remotes,
+      exposes,
       shared: {
         ...deps,
         react: {
