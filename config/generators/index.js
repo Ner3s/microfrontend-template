@@ -48,17 +48,17 @@ module.exports = function (plop) {
         return [
           {
             type: "add",
-            path: "../../src/{{folderComponent}}/{{pascalCase name}}/index.tsx",
+            path: "../../src/{{folderName}}/{{pascalCase name}}/index.tsx",
             templateFile: "templates/components/index.tsx.hbs",
           },
           {
             type: "add",
-            path: "../../src/{{folderComponent}}/{{pascalCase name}}/styles.ts",
+            path: "../../src/{{folderName}}/{{pascalCase name}}/styles.ts",
             templateFile: "templates/components/styles.ts.hbs",
           },
           {
             type: "add",
-            path: "../../src/{{folderComponent}}/{{pascalCase name}}/test.tsx",
+            path: "../../src/{{folderName}}/{{pascalCase name}}/test.tsx",
             templateFile: "templates/components/test.tsx.hbs",
           },
         ];
