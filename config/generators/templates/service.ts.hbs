@@ -1,0 +1,10 @@
+import { AxiosPromise } from 'axios';
+import axios from '~/services/api';
+
+const PREFIX = 'v1';
+
+function getAll(): AxiosPromise<any> {
+  return axios.get(`${PREFIX}/api-route`);
+}
+
+export { getAll };
