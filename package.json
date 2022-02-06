@@ -10,6 +10,7 @@
     "staging": "env NODE_ENV=staging webpack serve --config ./config/webpack.test.js ",
     "prod": "env NODE_ENV=production webpack serve --config ./config/webpack.prod.js ",
     "gen": "plop --plopfile ./config/generators/index.js",
+    "lint": "eslint . --ext .tsx,.ts --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
