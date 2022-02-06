@@ -1,6 +1,6 @@
+import packageJson from '../package.json';
 import Logo from '../public/logo.png';
 import './index.css';
-import packageJson from '../package.json';
 
 function App() {
   return (
