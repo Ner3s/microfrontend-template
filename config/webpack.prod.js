@@ -8,6 +8,9 @@ const common = require('../webpack.common');
 const utils = require("./webpack/utils");
 const deps = require('../package.json').dependencies;
 
+const remotes = require('./webpack/mfe/remotes');
+const exposes = require('./webpack/mfe/exposes');
+
 module.exports = merge(common, {
   mode: 'production',
 
