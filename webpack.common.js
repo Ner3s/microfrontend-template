@@ -119,7 +119,7 @@ module.exports = {
     ),
 
     new webpack.DefinePlugin({
-      "process.env": JSON.stringify(env),
+      "process.env": env ? JSON.stringify(env) : JSON.stringify(process.env),
     }),
 
     new ProvidePlugin({

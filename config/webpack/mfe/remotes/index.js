@@ -1,15 +1,13 @@
 /**
  * @Helper
  * import your remote and added in module.exports
- * Ex.: 
- * 
+ * Ex.:
+ *
  * const mfe = require('./mfe');
- * 
+ *
  * module.exports = {
  *  mfe: mfe.remote,
  * }
  */
 
-module.exports = {
-
-}
+module.exports = {};
